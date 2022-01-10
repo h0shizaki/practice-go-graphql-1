@@ -16,11 +16,11 @@ func NewModel(db *sql.DB) Models {
 }
 
 type Member struct {
-	ID         int       `json:"id"`
-	Name       string    `json:"name"`
-	Debut_date time.Time `json:"debut_date"`
-	Birth_date time.Time `json:"birth_date"`
-	MemberGen  string    `json:"generation"`
+	ID         int            `json:"id"`
+	Name       string         `json:"name"`
+	Debut_date time.Time      `json:"debut_date"`
+	Birth_date time.Time      `json:"birth_date"`
+	MemberGen  map[int]string `json:"generation"`
 }
 
 type Generation struct {
