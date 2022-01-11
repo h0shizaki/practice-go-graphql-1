@@ -18,6 +18,9 @@ func NewModel(db *sql.DB) Models {
 type Member struct {
 	ID         int            `json:"id"`
 	Name       string         `json:"name"`
+	Nickname   string         `json:"nickname"`
+	Channel    string         `json:"channel"`
+	Height     int            `json:"height"`
 	Debut_date time.Time      `json:"debut_date"`
 	Birth_date time.Time      `json:"birth_date"`
 	MemberGen  map[int]string `json:"generation"`

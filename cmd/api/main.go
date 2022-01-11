@@ -37,6 +37,7 @@ type Status struct {
 
 func main() {
 
+	//Setting
 	var config Config
 	flag.IntVar(&config.Port, "port", 8080, "Port of server")
 	flag.StringVar(&config.Environment, "environment", "Development", "Environment")
@@ -77,6 +78,7 @@ func main() {
 
 }
 
+//Connect to postgresQL
 func openDB(config Config) (*sql.DB, error) {
 	db, err := sql.Open("postgres", config.DB.DSN)
 
