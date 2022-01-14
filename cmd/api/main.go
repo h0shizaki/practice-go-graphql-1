@@ -11,6 +11,7 @@ import (
 	"server/models"
 	"time"
 
+	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 )
 
@@ -37,12 +38,19 @@ type Status struct {
 
 func main() {
 
+	//Read env
+	envs, err := godotenv.Read(".env")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	//Setting
 	var config Config
 	flag.IntVar(&config.Port, "port", 8080, "Port of server")
 	flag.StringVar(&config.Environment, "environment", "Development", "Environment")
 	flag.StringVar(&config.Version, "version", "1.0.0", "Version")
-	flag.StringVar(&config.DB.DSN, "dsn", "postgres://postgres:22194@localhost/mydb?sslmode=disable", "PostgresQL")
+	flag.StringVar(&config.DB.DSN, "dsn", envs["DB"], "PostgresQL")
 	flag.Parse()
 
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
